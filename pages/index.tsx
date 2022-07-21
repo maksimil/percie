@@ -1,12 +1,14 @@
 import { NextPage } from "next";
 import Header from "components/Header";
 import { getPostsList, PostMeta, getPostMeta } from "lib/posts";
+import { useRouter } from "next/router";
 
 type HomeProps = {
   posts: { hash: string; meta: PostMeta }[];
 };
 
 const PageLink = ({ post }: { post: { hash: string; meta: PostMeta } }) => {
+  const router = useRouter();
   const { hash, meta } = post;
   return (
     <div className="pb-5 pr-5">
@@ -16,7 +18,7 @@ const PageLink = ({ post }: { post: { hash: string; meta: PostMeta } }) => {
           "hover:shadow-acc cursor-pointer "
         }
         onClick={() => {
-          console.log(hash);
+          router.push(`/recipe/${hash}`);
         }}
       >
         <div className="text-dark text-xl font-medium font-mono">
