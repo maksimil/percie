@@ -1,4 +1,17 @@
+import { NextRouter } from "next/router";
+
 export type LinkProps = { label: string; onclick: () => void };
+
+export const headLinker = (
+  label: string,
+  link: string,
+  router: NextRouter
+) => ({
+  label,
+  onclick: () => {
+    router.push(link);
+  },
+});
 
 const TopLink = ({ link }: { link: LinkProps }) => {
   const { label, onclick } = link;

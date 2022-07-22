@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Header from "components/Header";
+import Header, { headLinker } from "components/Header";
 import { getPostsList, PostMeta, getPostMeta } from "lib/posts";
 import { useRouter } from "next/router";
 
@@ -31,9 +31,10 @@ const PageLink = ({ post }: { post: { hash: string; meta: PostMeta } }) => {
 };
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
+  const router = useRouter();
   return (
-    <div className="mx-10 <sm:mx-5">
-      <Header label="percie" />
+    <div className="mx-10 <sm:mx-2">
+      <Header label="percie" links={[headLinker("About", "/about", router)]} />
       <div className="grid grid-cols-3 <lg:grid-cols-2 <sm:grid-cols-1">
         {posts.map((post, idx) => (
           <PageLink key={idx} post={post} />

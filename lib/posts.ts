@@ -1,11 +1,9 @@
 import path from "path";
 import fs from "fs";
 import yaml from "js-yaml";
-import MarkdownIt from "markdown-it";
+import { parseMd } from "lib/md";
 
-const md = new MarkdownIt("commonmark");
-
-const POSTS_DIR = path.resolve(process.cwd(), "_posts");
+const POSTS_DIR = path.resolve(process.cwd(), "_posts/recipies");
 
 export const getPostsList = async (): Promise<string[]> => {
   return (await fs.promises.readdir(POSTS_DIR)).map((s) => path.parse(s).name);
@@ -27,11 +25,6 @@ const parseMeta = (raw: string): PostMeta => {
     throw `Title is not defined`;
   }
   return meta;
-};
-
-const parseMd = (raw: string): string => {
-  const html = md.render(raw);
-  return html;
 };
 
 const POST_REGEX = /---\n([\s\S]*?)\n---\n([\s\S]*)/m;
