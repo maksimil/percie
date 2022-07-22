@@ -12,5 +12,22 @@ p {
 }
 
 strong {
-  @apply font-medium text-acc;
+  @apply font-semibold text-dark;
+}
+
+li {
+  @apply text-dark;
+}
+
+ul,
+ol {
+  @apply pl-5;
+}
+
+a {
+  @apply text-dim underline;
+}
+
+a:hover {
+  @apply text-acc;
 }
