@@ -3,27 +3,33 @@ import { useRouter } from "next/router";
 import { getPost, getPostsList, Post } from "lib/posts";
 import Header, { headLinker } from "components/Header";
 import Article from "components/Article";
+import Head from "next/head";
 
 const RecipePage: NextPage<{ post: Post; hash: string }> = ({ post }) => {
   const router = useRouter();
   return (
-    <div className="mx-10 <sm:mx-2">
-      <Header
-        label={`${post.meta.title}`}
-        links={[
-          headLinker("Home", "/", router),
-          {
-            label: "Link",
-            onclick: () => {
-              const link = window.location.href;
-              navigator.clipboard.writeText(link);
+    <>
+      <Head>
+        <title>{post.meta.title}</title>
+      </Head>
+      <div className="mx-10 <sm:mx-2">
+        <Header
+          label={post.meta.title}
+          links={[
+            headLinker("Home", "/", router),
+            {
+              label: "Link",
+              onclick: () => {
+                const link = window.location.href;
+                navigator.clipboard.writeText(link);
+              },
             },
-          },
-        ]}
-      />
-      <Article data={post.data} />
-      <div className="pb-10" />
-    </div>
+          ]}
+        />
+        <Article data={post.data} />
+        <div className="pb-10" />
+      </div>
+    </>
   );
 };
 

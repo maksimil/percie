@@ -3,6 +3,7 @@ import Header, { headLinker } from "components/Header";
 import Article from "components/Article";
 import { getAbout } from "lib/about";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 type AboutProps = {
   about: string;
@@ -11,11 +12,19 @@ type AboutProps = {
 const AboutPage: NextPage<AboutProps> = ({ about }) => {
   const router = useRouter();
   return (
-    <div className="mx-10 <sm:mx-2">
-      <Header label="percie/about" links={[headLinker("Home", "/", router)]} />
-      <Article data={about} />
-      <div className="pb-10" />
-    </div>
+    <>
+      <Head>
+        <title>percie</title>
+      </Head>
+      <div className="mx-10 <sm:mx-2">
+        <Header
+          label="percie/about"
+          links={[headLinker("Home", "/", router)]}
+        />
+        <Article data={about} />
+        <div className="pb-10" />
+      </div>
+    </>
   );
 };
 
