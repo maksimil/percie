@@ -2,8 +2,9 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { getPost, getPostsList, Post } from "lib/posts";
 import Header from "components/Header";
+import Article from "components/Article";
 
-const RecipePage: NextPage<{ post: Post; hash: string }> = ({ post, hash }) => {
+const RecipePage: NextPage<{ post: Post; hash: string }> = ({ post }) => {
   const router = useRouter();
   return (
     <div className="mx-10 <sm:mx-5">
@@ -16,8 +17,17 @@ const RecipePage: NextPage<{ post: Post; hash: string }> = ({ post, hash }) => {
               router.push("/");
             },
           },
+          {
+            label: "Link",
+            onclick: () => {
+              const link = window.location.href;
+              navigator.clipboard.writeText(link);
+            },
+          },
         ]}
       />
+      <Article data={post.data} />
+      <div className="pb-10" />
     </div>
   );
 };

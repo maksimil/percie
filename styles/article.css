@@ -1,0 +1,16 @@
+h1 {
+  @apply text-dim text-4xl <md:text-3xl m-0 mt-5 mb-2 pr-5 pb-1 font-mono;
+  @apply inline-block font-normal border-b-2 border-acc;
+}
+
+h2 {
+  @apply m-0 mt-3 mb-1 font-normal font-mono text-dim text-2xl;
+}
+
+p {
+  @apply m-0 my-1 text-dark text-md text-justify;
+}
+
+strong {
+  @apply font-medium text-acc;
+}

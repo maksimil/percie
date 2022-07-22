@@ -14,12 +14,12 @@ const TopLink = ({ link }: { link: LinkProps }) => {
 
 const Header = ({ label, links }: { label: string; links?: LinkProps[] }) => {
   return (
-    <div className={"mt-5 mb-10 "}>
+    <div className={"mt-5 mb-5 "}>
       <div
         className={
-          "pb-2 w-100 <md:w-75 <sm:w-50 " +
+          "pb-2 w-150 <md:w-full " +
           "border-b-2 border-solid border-acc " +
-          "text-dim text-4xl"
+          "text-dim text-5xl <md:text-4xl font-medium font-mono "
         }
       >
         {label}
